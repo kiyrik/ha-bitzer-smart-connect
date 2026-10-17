@@ -17,6 +17,15 @@ OIDC_CLIENT_ID = "BitzerIoC.SPA"
 OIDC_REDIRECT_URI = f"{WWW_BASE}/auth/callback/"
 OIDC_SCOPE = "openid profile email webapi_scope"
 
+# Mobile app registration; these identify the distributed app, not a user's account.
+MOBILE_CLIENT_ID = "Bitzer.Balder.Code"
+MOBILE_CLIENT_SECRET = "j435jgjg345kgj34k5jgf32sv354"
+MOBILE_REDIRECT_URI = "de.bitzer.balder:/oauth2redirect"
+MOBILE_SCOPE = "webapi_scope openid offline_access profile email balder_scope"
+CONF_ACCESS_MODE = "access_mode"
+ACCESS_WEB = "web"
+ACCESS_MOBILE = "mobile"
+
 # --- Config entry keys ---
 CONF_USERNAME = "username"
 CONF_PASSWORD = "password"  # noqa: S105 - config key name, not a secret value
@@ -36,6 +45,8 @@ CONF_FAN_MAX = "fan_max"
 # WebSocket-first: no steady polling. A single snapshot at setup, then the hub drives updates.
 # Polling is only a bounded fallback while the hub is down.
 HTTP_TIMEOUT = 30
+# The parameter-write endpoint can wait about 60 seconds for the gateway reply.
+WRITE_HTTP_TIMEOUT = 75
 TOKEN_EXPIRY_MARGIN = timedelta(minutes=5)  # re-login this early before expiry
 DEFAULT_SCAN_INTERVAL = 120  # seconds; gentle reconcile poll that runs alongside the hub
 MIN_SCAN_INTERVAL = 30
